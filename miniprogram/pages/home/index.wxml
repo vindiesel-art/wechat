@@ -4,24 +4,34 @@
     <text class="subtitle">AI 深度解析 · 每日价值精选</text>
   </view>
 
-  <scroll-view scroll-y class="report-card" scroll-into-view="{{lastLineId}}">
+  <scroll-view 
+  scroll-y 
+  class="report-card" 
+  scroll-top="{{scrollTop}}"
+  scroll-with-animation="{{!isTouching}}"
+  bindscroll="onScroll"
+  bindtouchstart="handleTouchStart"
+  bindtouchend="handleTouchEnd"
+  bindtouchcancel="handleTouchEnd"
+>
     <view class="content-box">
-      <text user-select class="report-text">{{reportText}}</text>
-      <view id="bottom"></view>
+      <text user-select class="report-text">{{reportText || (loading ? 'AI 正在拼命撰稿中...' : '点击下方按钮获取今日财经洞察')}}</text>
     </view>
-    
-    <view wx:if="{{loading && !reportText}}" class="loading-status">
-      <view class="spinner"></view>
-      <text>AI 正在实时整理中...</text>
-    </view>
+    <view id="anchor"></view>
   </scroll-view>
 
   <view class="button-group">
-    <button class="btn morning" bindtap="fetchReportStream" data-type="早报" disabled="{{loading}}">
-      ☀️ 今日早报
-    </button>
-    <button class="btn evening" bindtap="fetchReportStream" data-type="晚报" disabled="{{loading}}">
-      🌙 今日晚报
-    </button>
+    <button 
+      class="btn morning" 
+      bindtap="fetchReportStream" 
+      data-type="早报" 
+      disabled="{{loading}}"
+    >☀️ 今日早报</button>
+    <button 
+      class="btn evening" 
+      bindtap="fetchReportStream" 
+      data-type="晚报" 
+      disabled="{{loading}}"
+    >🌙 今日晚报</button>
   </view>
 </view>
