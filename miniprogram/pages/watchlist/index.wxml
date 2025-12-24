@@ -1,0 +1,21 @@
+<view class="container">
+  <view style="padding: 15px; background: #f8f8f8;">
+    <navigator url="/pages/add-stock/index" style="background: #fff; text-align: center; padding: 12px; border-radius: 8px; color: #1E90FF; border: 1rpx solid #e0e0e0; font-weight: bold;">
+      + 添加自选股 ({{myStocks.length}}/10)
+    </navigator>
+  </view>
+
+  <view class="stock-list">
+    <block wx:for="{{myStocks}}" wx:key="code">
+      <view style="padding: 20px; border-bottom: 1rpx solid #eee; display: flex; justify-content: space-between;">
+        <view>{{item.name}} <text style="color:#999; font-size:12px;">{{item.code}}</text></view>
+        <view>{{item.price || '--'}}</view>
+      </view>
+    </block>
+    
+    <view wx:if="{{myStocks.length === 0}}" style="text-align: center; padding-top: 50px; color: #999;">
+      列表空空如也，快去添加吧
+    </view>
+  </view>
+
+</view>

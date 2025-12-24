@@ -1,0 +1,18 @@
+<view class="container" style="padding: 20px;">
+  <view class="header" style="margin-bottom: 20px;">
+    <text style="font-size: 24px; font-weight: bold;">🤖 AI 每日点评</text>
+  </view>
+
+  <view class="content-box" style="background: #fff; padding: 20px; border-radius: 12px; min-height: 200px; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+    
+    <view wx:if="{{loading}}" style="text-align: center; margin-top: 50px;">
+      <view>AI 正在分析大盘...</view>
+      <view style="font-size: 12px; color: #999; margin-top: 10px;">(DeepSeek 大脑极速运转中)</view>
+    </view>
+
+    <text wx:else style="font-size: 16px; line-height: 1.8; color: #333;">{{reportText}}</text>
+  
+  </view>
+
+  <button bindtap="generateReport" type="primary" style="margin-top: 30px;">生成最新研报</button>
+</view>

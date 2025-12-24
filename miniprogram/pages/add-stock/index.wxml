@@ -1,0 +1,36 @@
+<view class="container" style="padding: 20px;">
+  <view class="search-box" style="display: flex; margin-bottom: 20px;">
+    <input 
+      placeholder="输入代码或名称（如：茅台）" 
+      bindinput="onInput"
+      style="border: 1px solid #ddd; padding: 10px; flex: 1; border-radius: 4px;"
+    />
+    <button 
+      bindtap="doSearch" 
+      type="primary" 
+      size="mini" 
+      style="margin-left: 10px; height: 44px; line-height: 44px;">
+      搜索
+    </button>
+  </view>
+
+  <view class="result-list">
+    <block wx:for="{{stockList}}" wx:key="code">
+      <view class="stock-item" 
+            bindtap="onAddStock" 
+            data-item="{{item}}" 
+            style="padding: 20px; border-bottom: 1rpx solid #eee; background: #fff;">
+        <text style="font-size: 32rpx;">{{item.name}}</text>
+        <text style="color: #999; margin-left: 10rpx;">{{item.code}}</text>
+      </view>
+    </block>
+  </view>
+
+  <view class="stock-item" 
+        bindtap="onAddStock" 
+        data-item="{{item}}" 
+        style="padding: 15px; border-bottom: 1px solid #eee; display: flex; justify-content: space-between;">
+    <text>{{item.name}}</text>
+    <text style="color: #666;">{{item.code}}</text>
+  </view>
+</view>
