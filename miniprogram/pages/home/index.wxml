@@ -5,33 +5,26 @@
   </view>
 
   <scroll-view 
-  scroll-y 
-  class="report-card" 
-  scroll-top="{{scrollTop}}"
-  scroll-with-animation="{{!isTouching}}"
-  bindscroll="onScroll"
-  bindtouchstart="handleTouchStart"
-  bindtouchend="handleTouchEnd"
-  bindtouchcancel="handleTouchEnd"
->
+    scroll-y 
+    class="report-card" 
+    scroll-top="{{scrollTop}}"
+    scroll-with-animation="{{!isTouching}}"
+    bindscroll="onScroll"
+    bindtouchstart="handleTouchStart"
+    bindtouchend="handleTouchEnd"
+    bindtouchcancel="handleTouchEnd"
+  >
     <view class="content-box">
-      <text user-select class="report-text">{{reportText || (loading ? 'AI 正在拼命撰稿中...' : '点击下方按钮获取今日财经洞察')}}</text>
+      <text user-select class="report-text">{{reportText || (loading ? 'AI 正在分析今日局势...' : '请选择今日报时')}}</text>
     </view>
-    <view id="anchor"></view>
   </scroll-view>
 
   <view class="button-group">
-    <button 
-      class="btn morning" 
-      bindtap="fetchReportStream" 
-      data-type="早报" 
-      disabled="{{loading}}"
-    >☀️ 今日早报</button>
-    <button 
-      class="btn evening" 
-      bindtap="fetchReportStream" 
-      data-type="晚报" 
-      disabled="{{loading}}"
-    >🌙 今日晚报</button>
+    <button class="btn morning" bindtap="fetchReportStream" data-type="早报" disabled="{{loading}}">
+      ☀️ 今日早报
+    </button>
+    <button class="btn evening" bindtap="fetchReportStream" data-type="晚报" disabled="{{loading}}">
+      🌙 今日晚报
+    </button>
   </view>
 </view>
